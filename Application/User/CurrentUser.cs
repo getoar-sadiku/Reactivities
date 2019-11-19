@@ -34,7 +34,7 @@ namespace Application.User
 
             public async Task<User> Handle(Query request, CancellationToken cancellationToken)
             {
-                var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
+                var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUsername());
 
                 //if (user == null)
                 //    throw new RestException(HttpStatusCode.Unauthorized);
