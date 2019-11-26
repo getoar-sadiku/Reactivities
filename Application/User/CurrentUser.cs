@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -44,7 +45,7 @@ namespace Application.User
                     DisplayName = user.DisplayName,
                     Token = _jwtGenerator.CreateToken(user),
                     UserName = user.UserName,
-                    Image = null
+                    Image = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
                 };
 
                 throw new RestException(HttpStatusCode.Unauthorized);
