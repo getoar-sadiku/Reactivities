@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PhotoController : BaseController
+    public class PhotosController : BaseController
     {
         [HttpPost]
-        public async Task<ActionResult<Photo>> Add([FromBody] Add.Command command)
+        public async Task<ActionResult<Photo>> Add([FromForm]Add.Command command)
         {
             return await Mediator.Send(command);
         }
