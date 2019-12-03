@@ -1,10 +1,10 @@
-﻿using Application.Interfaces;
+using System;
+using Application.Interfaces;
 using Application.Photos;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
 
 namespace Infrastructure.Photos
 {
@@ -13,11 +13,13 @@ namespace Infrastructure.Photos
         private readonly Cloudinary _cloudinary;
         public PhotoAccessor(IOptions<CloudinarySettings> config)
         {
-            var acc = new Account(
+            var acc = new Account
+            (
                 config.Value.CloudName,
                 config.Value.ApiKey,
                 config.Value.ApiSecret
-                );
+            );
+
             _cloudinary = new Cloudinary(acc);
         }
 
@@ -54,7 +56,7 @@ namespace Infrastructure.Photos
 
             var result = _cloudinary.Destroy(deleteParams);
 
-            return result.Result;
+            return result.Result == "ok" ? result.Result : null;
         }
     }
 }

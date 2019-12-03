@@ -9,7 +9,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191030123319_ActivityEntityAdded")]
+    [Migration("20190723081531_ActivityEntityAdded")]
     partial class ActivityEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

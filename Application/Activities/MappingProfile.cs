@@ -1,6 +1,6 @@
+using System.Linq;
 using AutoMapper;
 using Domain;
-using System.Linq;
 
 namespace Application.Activities
 {

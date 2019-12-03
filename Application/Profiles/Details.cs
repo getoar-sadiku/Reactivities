@@ -1,26 +1,22 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace Application.Profiles
 {
     public class Details
     {
-        public class Query : IRequest<Profile>
-        {
+        public class Query : IRequest<Profile> 
+        { 
             public string Username { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, Profile>
         {
             private readonly DataContext _context;
-
             public Handler(DataContext context)
             {
                 _context = context;
